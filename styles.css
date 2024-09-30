@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,69 +9,70 @@
     font-family: Arial, sans-serif;
   }
   
+  /* Header Section */
   .header {
+    position: relative;
+    background-image: url('assets/bun.png');
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem;
+    align-items: flex-start; /* Aligns items to the top */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+    z-index: 1;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #f8f9fa;
+    width: 100%;
   }
   
-  .logo-container {
+  .logo-brand {
     display: flex;
     align-items: center;
   }
   
   .logo {
-    height: 50px;
-    width: 50px;
-    margin-right: 15px;
+    width: 6.25rem; /* 100px -> 6.25rem */
+    height: auto;
+    margin-right: 0.625rem; /* 10px -> 0.625rem */
   }
   
   .brand-name {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2em;
+    color: #ffcc00;
   }
   
-  .cta-buttons {
-    display: flex;
-    gap: 10px;
+  .social-buttons .icon {
+    margin-left: 1.25rem; /* 20px -> 1.25rem */
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.2em;
   }
   
-  .btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
+  .social-buttons .twitter {
+    color: #1DA1F2;
   }
   
-  .twitter {
-    background-color: #1DA1F2;
+  .social-buttons .telegram {
+    color: #0088cc;
   }
   
-  .telegram {
-    background-color: #0088cc;
-  }
-  
-  .docs {
-    background-color: #6c757d;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .brand-name {
-      display: none; /* Hide brand name on smaller screens */
-    }
-  
-    .header {
-      flex-direction: column;
-    }
-  
-    .cta-buttons {
-      margin-top: 10px;
-    }
+  .social-buttons .docs {
+    color: #FF6347;
   }
   
