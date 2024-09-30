@@ -1,0 +1,16 @@
+1. Logo left side far side
+2. Brand name after logo - far side.
+3.Twitter, Telegram and DOCS buttons - far right side.
+4.First look - 75% banner/animations, etc 25% - Button "Launch App" + Text.
+
+
+
+Mid
+4.Carousel made for cards, each one appearing after pushing left/right -centerd
+-Each card made to 40-60% of the width of the page - centered
+
+5. Big card (75% width of page) - centered
+6.Two smaller cards below the one above with simetric looks (Total width covering the entire width of the one above OR slightly smaller)
+
+7. Check full documentation button + text removed.
+8.
