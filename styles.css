@@ -112,7 +112,7 @@
         background-color: #0056b3; /* Darker shade on hover */
     }
 
-    /* Cards Section */
+    /* Carousel Section */
     
     #carousel-section {
         position: relative;
@@ -135,7 +135,7 @@
         background-color: #333;
         color: white;
         width: 25%; /* Set width to 25% */
-        height: 50vw; /* Set height to 50% of viewport width */
+        height: 30vw; /* Set height to 50% of viewport width */
         padding: 1.5rem;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -161,5 +161,40 @@
     
     .right {
         right: 10px; /* Adjust right button position */
+    }
+    
+
+    /* Cards Section */
+
+    #info-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align the cards */
+        margin: 20px; /* Margin around the section */
+    }
+    
+    .big-card {
+        background-color: #444;
+        color: white;
+        width: 70%; /* Set width to 70% */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px; /* Space below the big card */
+    }
+    
+    .small-cards {
+        display: flex;
+        justify-content: space-between; /* Space between small cards */
+        width: 70%; /* Combined width of small cards */
+    }
+    
+    .small-card {
+        background-color: #666;
+        color: white;
+        width: 48%; /* Each small card width */
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     

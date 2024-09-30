@@ -8,9 +8,18 @@
 Mid
 4.Carousel made for cards, each one appearing after pushing left/right -centerd
 -Each card made to 40-60% of the width of the page - centered
+-Carousel efect : the next (previous one hidden partially before the one that's being viewed.)
+
+Between these two canvass pic (left or right - text next to it)
+
 
 5. Big card (75% width of page) - centered
 6.Two smaller cards below the one above with simetric looks (Total width covering the entire width of the one above OR slightly smaller)
 
+FAQ zone - check morphware.ai(2) and pulseai.info(1).
+
+
 7. Check full documentation button + text removed.
 8.
+
+9.Footer
