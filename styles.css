@@ -7,19 +7,22 @@
   
   body {
     font-family: Arial, sans-serif;
+    background-color: black;
   }
   
   /* Header Section */
   .header {
     position: relative;
-    background-image: url('assets/bun.png');
+    background-image: url('assets/dsadsa-fotor-bg-remover-20240930133713.png');
     background-size: cover;
-    height: 100vh;
+    height: 75vh;
     color: white;
     display: flex;
     justify-content: space-between;
     padding: 1.25rem;
     align-items: flex-start; /* Aligns items to the top */
+    width: 100%;
+    z-index: 10; /* Ensure it stays above other elements */
   }
   
   .overlay {
@@ -76,3 +79,87 @@
     color: #FF6347;
   }
   
+    /* Main Section */
+
+    .container-h1-p {
+        display: flex; /* Use flexbox for layout */
+        justify-content: space-between; /* Space between items */
+        align-items: center; /* Align items vertically in the center */
+        height: 25vh; /* Adjust height if necessary */
+    }
+    
+    .text-container {
+        width: 30%; /* 30% width for text */
+        color: white;
+    }
+    
+    .button-container {
+        display: flex; /* Ensure flex properties on button container */
+        justify-content: flex-end; /* Aligns the button to the right */
+        flex-grow: 1; /* Allow the button container to grow and take remaining space */
+    }
+    
+    .btn-launch {
+        border-radius: 50%; /* Round button */
+        padding: 1rem 2rem; /* Padding for size */
+        background-color: #007bff; /* Button color */
+        color: white; /* Text color */
+        text-decoration: none; /* No underline */
+        transition: background-color 0.3s; /* Transition effect */
+    }
+    
+    .btn-launch:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+
+    /* Cards Section */
+    
+    #carousel-section {
+        position: relative;
+        overflow: hidden; /* Hide overflow to only show one slide at a time */
+        height: 50vw; /* Set height to 50% of viewport width */
+        padding: 20px 0; /* Add space before and after the carousel */
+    }
+    
+    .carousel-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .carousel {
+        display: flex;
+        transition: transform 0.5s ease; /* Smooth transition effect */
+    }
+    
+    .card {
+        background-color: #333;
+        color: white;
+        width: 25%; /* Set width to 25% */
+        height: 50vw; /* Set height to 50% of viewport width */
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0; /* Prevent shrinking of cards */
+        margin: 0 10px; /* Space between cards */
+    }
+    
+    .carousel-button {
+        background-color: #555;
+        color: white;
+        border: none;
+        padding: 1rem;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+    
+    .left {
+        left: 10px; /* Adjust left button position */
+    }
+    
+    .right {
+        right: 10px; /* Adjust right button position */
+    }
+    
