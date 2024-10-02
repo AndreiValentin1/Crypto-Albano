@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Header</title>
+  <title>Meme Art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,9 +18,16 @@
             <h1 class="brand-name">Meme Art</h1>
           </div>
           <div class="social-buttons">
-            <a href="https://twitter.com" class="icon twitter" target="_blank">Twitter</a>
-            <a href="https://telegram.org" class="icon telegram" target="_blank">Telegram</a>
-            <a href="https://docs.example.com" class="icon docs" target="_blank">Docs</a>
+            <div class="social-buttons">
+                <a href="https://twitter.com" class="icon twitter" target="_blank" data-text="Twitter">
+                  <img src="assets/bird_twitter_logo_icon.svg" alt="Twitter Icon">
+                </a>
+                <a href="https://telegram.org" class="icon telegram" target="_blank" data-text="Telegram">
+                  <img src="assets/telegram_icon.svg" alt="Telegram Icon">
+                </a>
+            <a href="https://docs.example.com" class="icon docs" target="_blank" data-text="Telegram"
+                ><img src="assets/github_logo_social_icon.svg" alt="Docs Icon">
+                </a>
           </div>
         </div>
     </header>
@@ -26,8 +36,8 @@
         <section>
             <div class="container-h1-p">
                 <div class="text-container">
-                    <h1 class="title">Welcome to Our Platform</h1>
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet.</p>
+                    <h1 class="title">Fill Up Your Canvas with Creativity</h1>
+                    <p class="lead">Whether you’re a developer ready to launch a new token or an investor exploring high-potential opportunities, Meme Art delivers a secure and user-friendly platform built to support your goals.</p>
                 </div>
                 <div class="button-container">
                     <a href="#" class="btn-launch">Launch App</a>
@@ -36,50 +46,61 @@
         </section>
 
 
-
+<h1 class="carousel-title">Built for developers and investors:</h1>
+<h2 class="carousel-2nd-title">Developers:</h2>
         <section id="carousel-section">
             <div class="carousel-container">
                 <button class="carousel-button left" onclick="moveCarousel(-1)">&#10094;</button>
                 <div class="carousel">
                     <div class="card">
-                        <h3>Card Title 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                       <!-- <h3>Card Title 1</h3> -->
+                        <p>Meme Art <em>simplifies token deployment by providing the initial liquidity</em>, removing the need for you to supply it. Once your token hits a market cap of $60,000, it will be automatically listed on your chosen DEX, making the process seamless and achievable in just a few clicks.</p>
                     </div>
                     <div class="card">
-                        <h3>Card Title 2</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Why choose us for your launch?</h3>
+                        <p>Meme Art <em>enables fast, easy, and cost-free token deployment</em>. You can have your token live and in the spotlight within moments.</p>
                     </div>
                     <div class="card">
-                        <h3>Card Title 3</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <!--  <h3>Card Title 3</h3> -->
+                        <p>Once your token reaches a market cap of $60,000, <em>it’s automatically listed on your selected DEX. Simultaneously, the liquidity pool is locked, and the contract is renounced</em>, providing enhanced security for your community.</p>
                     </div>
                     <div class="card">
-                        <h3>Card Title 4</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Selective developer?</h3>
+                        <p>Our dynamic deploy options have you covered! <em>Simply choose the option that suits your needs, and with just one click, you're ready to deploy</em>.</p>
                     </div>
                 </div>
                 <button class="carousel-button right" onclick="moveCarousel(1)">&#10095;</button>
             </div>
         </section>
-        
+
+        <div class="canvas-container">
+            <div class="canvas">
+                <img src="assets/4-fotor-bg-remover-2024093013384.png" alt="Canvas">
+            </div>
+        </div>
+
+        <h1 class="investors-h1">Investors:</h1>
         <section id="info-section">
             <div class="big-card">
-                <h2>Big Card Title</h2>
+                <h2>Investors:</h2>
+                <div class="content">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    With Meme Art, you can access new tokens before they’re listed on major DEXs, giving you a head start on promising projects and the opportunity to maximize your returns. Our platform handles both the liquidity pool and the token contract, offering a significantly safer investment environment compared to the standard, more unpredictable market.
                 </p>
+                <image class="investors-canvas-guy" src="assets/3-fotor-bg-remover-20240930133737.png" alt="Investors">
+                </div>
             </div>
             <div class="small-cards">
                 <div class="small-card">
-                    <h3>Small Card 1</h3>
+                    <h3>Why Investors Trust Us</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        Be one step ahead of the crowd with exclusive early access to new tokens and boost your potential to high gains. Our user-friendly interface lets you easily browse, evaluate, and invest in tokens, while portfolio tracking helps you stay on top of your investments. Plus, with enhanced safety features, we provide a secure and seamless experience for every investor.
                     </p>
                 </div>
                 <div class="small-card">
-                    <h3>Small Card 2</h3>
+                    <h3>$MERT Benefits:</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
+                        Meme Art goes beyond token deployment and investment by launching its own native token, $MERT. As a $MERT staker, you’ll enjoy direct benefits from the platform’s revenue, earning passive income from various streams, gaining voting rights, and much more.
                     </p>
                 </div>
             </div>

@@ -56,28 +56,47 @@
   }
   
   .brand-name {
-    font-size: 2em;
+    font-size: 2rem;
     color: #ffcc00;
+    font-family: Pacifico, cursive;
   }
+
+  .pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
   
   .social-buttons .icon {
     margin-left: 1.25rem; /* 20px -> 1.25rem */
     color: white;
     text-transform: uppercase;
     font-size: 1.2em;
+    position: relative;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    margin: 0 10px;
+    vertical-align: middle;
   }
+
+  
   
   .social-buttons .twitter {
-    color: #1DA1F2;
+    color: #000;
+
   }
   
   .social-buttons .telegram {
-    color: #0088cc;
+    color: #000;
   }
   
   .social-buttons .docs {
     color: #FF6347;
   }
+
+  
   
     /* Main Section */
 
@@ -92,11 +111,17 @@
         width: 30%; /* 30% width for text */
         color: white;
     }
+
+    .title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
     
     .button-container {
         display: flex; /* Ensure flex properties on button container */
         justify-content: flex-end; /* Aligns the button to the right */
         flex-grow: 1; /* Allow the button container to grow and take remaining space */
+        width: 50%;
     }
     
     .btn-launch {
@@ -114,73 +139,188 @@
 
     /* Carousel Section */
     
-    #carousel-section {
-        position: relative;
-        overflow: hidden; /* Hide overflow to only show one slide at a time */
-        height: 50vw; /* Set height to 50% of viewport width */
-        padding: 20px 0; /* Add space before and after the carousel */
-    }
-    
-    .carousel-container {
-        display: flex;
-        align-items: center;
-    }
-    
-    .carousel {
-        display: flex;
-        transition: transform 0.5s ease; /* Smooth transition effect */
-    }
-    
+   /* Existing classes have minimal changes */
+#carousel-section {
+    position: relative;
+    overflow: hidden;
+    height: 50vw;
+    padding: 20px 0;
+  }
+  
+  .carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 50vw; /* Adjusted height */
+    overflow: hidden; /* Hide overflow for the carousel */
+}
+
+.card {
+    position: absolute;
+    width: 25%; /* Use the same width as before */
+    height: 30vw; /* Same height as before */
+    background-color: #333; /* Same background color */
+    color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.5s, opacity 0.5s; /* Smooth transition */
+    left: calc(50% - 12.5%); /* Centering */
+    top: 0; /* Aligning cards to the top */
+}
+
+/* Button styling */
+.carousel-button {
+    position: absolute;
+    top: 40%; /* Adjust button position */
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-size: xxx-large;
+    font-family: monospace;
+    font-weight: bold;
+    z-index: 2; /* Ensure buttons are above cards */
+}
+
+.carousel-button.left {
+    left: 10px; /* Positioning for left button */
+}
+
+.carousel-button.right {
+    right: 10px; /* Positioning for right button */
+}
+
+  
+  /* New Additions for Partial Visibility */
+  .card:nth-child(n+2) {
+    transform: scale(0.85); /* Slightly shrink side cards */
+    opacity: 0.5;
+  }
+  
+  .card.active {
+    transform: scale(1); /* Larger active card */
+    opacity: 1;
+  }
+  
+  /* New Addition for Responsiveness */
+  @media (max-width: 768px) {
     .card {
-        background-color: #333;
-        color: white;
-        width: 25%; /* Set width to 25% */
-        height: 30vw; /* Set height to 50% of viewport width */
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        flex-shrink: 0; /* Prevent shrinking of cards */
-        margin: 0 10px; /* Space between cards */
+      width: 80%; /* Increase card width on smaller screens */
+      height: auto;
     }
-    
-    .carousel-button {
-        background-color: #555;
-        color: white;
-        border: none;
-        padding: 1rem;
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1;
+  
+    .left, .right {
+      display: none; /* Hide navigation on small screens */
     }
-    
-    .left {
-        left: 10px; /* Adjust left button position */
-    }
-    
-    .right {
-        right: 10px; /* Adjust right button position */
-    }
+  }
+  
+
     
 
     /* Cards Section */
+
+/* Animation keyframes */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Add hidden class */
+.hidden {
+    opacity: 0;
+    visibility: hidden; /* Makes the element not visible */
+}
+
+/* Animation classes */
+.animate-top {
+    animation: slideInFromTop 0.8s forwards; /* Slide from top */
+}
+
+.animate-left {
+    animation: slideInFromLeft 0.8s forwards; /* Slide from left */
+}
+
+.animate-right {
+    animation: slideInFromRight 0.8s forwards; /* Slide from right */
+}
+
 
     #info-section {
         display: flex;
         flex-direction: column;
         align-items: center; /* Center align the cards */
-        margin: 20px; /* Margin around the section */
+        margin: 1.25rem; /* Margin around the section */
     }
     
+.investors-h1 {
+    color: white;
+}
     .big-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         background-color: #444;
         color: white;
         width: 70%; /* Set width to 70% */
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        margin-bottom: 20px; /* Space below the big card */
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+        margin-bottom: 1.25rem; /* Space below the big card */
+        font-size: 2rem;
+    }
+
+    .big-card h2 {
+        text-align: center; /* Center align text */
+        width: 100%; /* Full width */
+    }
+
+    .content {
+        display: flex;
+        align-items: flex-start; /* Align items to the top */
+        width: 100%; /* Full width */
+    }
+
+    .content p {
+        flex: 1; /* Allow text to grow */
+    }
+
+    .investors-canvas-guy {
+        
+        flex: 0 0 auto; /* Prevent shrinking of image */
+        margin-left: 1.25rem; /* Space between image and text */
     }
     
     .small-cards {
@@ -196,5 +336,6 @@
         padding: 15px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        font-size: 2rem ;
     }
     

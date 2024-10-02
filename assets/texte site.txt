@@ -1,0 +1,82 @@
+Primul text din stanga (partea de sus a paginii)
+
+Fill Up Your Canvas with Creativity
+
+Whether you’re a developer ready to launch a new token or an investor exploring high-potential opportunities, Meme Art delivers a secure and user-friendly platform built to support your goals.
+
+
+
+Texte carusel: 
+Textul asta trebuie pus deasupra caruselului->  Built for developers and investors: (iar fix sub textul asta, sa adaugi "Developers:")
+
+
+Card 1:
+Meme Art simplifies token deployment by providing the initial liquidity, removing the need for you to supply it. Once your token hits a market cap of $60,000, it will be automatically listed on your chosen DEX, making the process seamless and achievable in just a few clicks.
+
+Card 2:
+Why choose us for your launch?
+Meme Art enables fast, easy, and cost-free token deployment. You can have your token live and in the spotlight within moments.
+
+Card 3:
+Once your token reaches a market cap of $60,000, it’s automatically listed on your selected DEX. Simultaneously, the liquidity pool is locked, and the contract is renounced, providing enhanced security for your community.
+
+Card 4:
+Selective developer? Our dynamic deploy options have you covered! Simply choose the option that suits your needs, and with just one click, you're ready to deploy.
+
+
+
+Big card (75%):
+Text deasupra lui -> Investors:
+Text Big Card: Investors:
+With Meme Art, you can access new tokens before they’re listed on major DEXs, giving you a head start on promising projects and the opportunity to maximize your returns. Our platform handles both the liquidity pool and the token contract, offering a significantly safer investment environment compared to the standard, more unpredictable market.
+
+
+Carduri mici:
+Card 1:
+Why Investors Trust Us
+Be one step ahead of the crowd with exclusive early access to new tokens and boost your potential to high gains. Our user-friendly interface lets you easily browse, evaluate, and invest in tokens, while portfolio tracking helps you stay on top of your investments. Plus, with enhanced safety features, we provide a secure and seamless experience for every investor.
+
+Card 2:
+$MERT Benefits:
+Meme Art goes beyond token deployment and investment by launching its own native token, $MERT. As a $MERT staker, you’ll enjoy direct benefits from the platform’s revenue, earning passive income from various streams, gaining voting rights, and much more.
+
+
+
+FAQ section:
+
+Q: How much time does the token creation and deployment process take?
+A: You can create and deploy a token seamlessly in less than one minute, just fill the gaps and click on deploy.
+
+Q: What are the costs to create a token on Meme Art?
+A: Creating and deploying a token on our platform is free, you will only have to pay the gas for the transactions.
+
+Q: What is the amount Meme Art adds to the liquidity of a new token created on the platform??
+A: Our platform provides 1 ETH in liquidity for every new token deployed.
+
+Q: When will staking become available?
+A: $MERT holders will be able to stake their tokens 42 hours after launch.
+
+Q: What percentage of the generated fees is allocated to $MART stakers?
+A: 50% of the generated fees will be distributed to $MART stakers, while the remaining 50% will be allocated to project development
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
