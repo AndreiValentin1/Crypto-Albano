@@ -5,8 +5,22 @@
     box-sizing: border-box;
   }
   
+  .montserrat-alternates-thin {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .montserrat-alternates-regular {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
   body {
-    font-family: Arial, sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 400; 
+    font-style: normal;
     background-color: black;
   }
   
@@ -105,37 +119,109 @@
         justify-content: space-between; /* Space between items */
         align-items: center; /* Align items vertically in the center */
         height: 25vh; /* Adjust height if necessary */
+        padding: 0 4rem; /* Padding on the sides */
     }
     
     .text-container {
         width: 30%; /* 30% width for text */
         color: white;
+       
     }
 
     .title {
         font-size: 2.5rem;
         margin-bottom: 1rem;
     }
+
+    .title-lead {
+        color: #ffcc00;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        margin-bottom: 1.25rem;
+    }
     
+    /* Button styles */ 
+
     .button-container {
         display: flex; /* Ensure flex properties on button container */
         justify-content: flex-end; /* Aligns the button to the right */
         flex-grow: 1; /* Allow the button container to grow and take remaining space */
         width: 50%;
+        padding: 0 4rem; /* Padding on the sides */
+    }
+    
+    /* Liquid Button */
+    .btn-liquid {
+        position: relative;
+        display: inline-block;
+        width: 200px;
+        height: 60px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: black; /* Default background is black */
+        color: white; /* Default text color is white */
+        border: none;
+        border-radius: 30px;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center; /* Center text horizontally */
+        line-height: 60px; /* Center text vertically */
+        transition: background 0.3s ease;
+    }
+    
+    .btn-liquid-inner {
+        position: relative;
+        z-index: 2;
+        color: white;
+    }
+    
+    .btn-launch canvas {
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        bottom: -50px;
+        left: -50px;
+        z-index: 1;
+    }
+    
+    /* Countdown button state */
+    .countdown-text {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 32px; /* Bigger and more visible countdown */
+        font-family: '', sans-serif; /* Option for a special font */
+        color: white;
     }
     
     .btn-launch {
-        border-radius: 50%; /* Round button */
-        padding: 1rem 2rem; /* Padding for size */
-        background-color: #007bff; /* Button color */
+        position: relative;
+        display: inline-block;
+        width: auto; /* Avoid stretching */
+        height: 50px;
+        line-height: 50px; /* Center text vertically */
+        padding: 0 20px; /* Add padding for better appearance */
+        text-align: center;
+        cursor: pointer;
+        background: black; /* Set button background to black */
         color: white; /* Text color */
-        text-decoration: none; /* No underline */
-        transition: background-color 0.3s; /* Transition effect */
+        border: 2px solid yellow; /* Fine yellow border */
+        border-radius: 25px; /* Rounded corners */
+        overflow: hidden;
+        z-index: 1; /* Ensure the text remains visible above the effect */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+        
+    .btn-launch:hover {
+        background: transparent; /* Liquid effect background when hovered */
+        transition: border-color 0.3s ease;
+    }
+        
+    .btn-launch:active {
+        transform: translateY(-50%) scale(0.95); /* Adds slight scale-down effect on click */   
     }
     
-    .btn-launch:hover {
-        background-color: #0056b3; /* Darker shade on hover */
-    }
 
     /* Carousel Section */
     
@@ -161,6 +247,30 @@
     overflow: hidden; /* Hide overflow for the carousel */
 }
 
+.carousel-cards-title {
+    font-size: 2rem;
+    color: white;
+    font-family: Pacifico, cursive;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+
+.carousel-title {
+    font-size: 2rem;
+    color: white;
+    font-family: Pacifico, cursive;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.carousel-text {
+    font-size: 1.2rem; /* Adjust based on desired size */
+    position: absolute;
+    z-index: 10;
+    /* Add other styling to make sure it looks correct */
+  }
+  
 .card {
     position: absolute;
     width: 25%; /* Use the same width as before */
@@ -172,6 +282,24 @@
     transition: transform 0.5s, opacity 0.5s; /* Smooth transition */
     left: calc(50% - 12.5%); /* Centering */
     top: 0; /* Aligning cards to the top */
+    display: flex; /* Enable flexbox */
+
+    flex-direction: column; /* Arrange children in a column */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.carousel-cards-text {
+    text-align: center; /* Center align text */
+    font-size: 2rem; /* Font size for text */
+    margin-top: auto; /* Push the text to the bottom */
+    margin-bottom: auto; /* Push the text to the top */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.meme-art {
+    font-family: Pacifico, cursive; /* Use Pacifico font */
+    color: #ffcc00;
+    font-family: Pacifico, cursive; /* Use Pacifico font */
 }
 
 /* Button styling */
@@ -261,19 +389,23 @@
 /* Add hidden class */
 .hidden {
     opacity: 0;
+    transform: translateY(100px)  /* Makes the element not visible */;
     visibility: hidden; /* Makes the element not visible */
 }
 
 /* Animation classes */
 .animate-top {
+    opacity: 1;
     animation: slideInFromTop 0.8s forwards; /* Slide from top */
 }
 
 .animate-left {
+    opacity: 1;
     animation: slideInFromLeft 0.8s forwards; /* Slide from left */
 }
 
 .animate-right {
+    opacity: 1;
     animation: slideInFromRight 0.8s forwards; /* Slide from right */
 }
 
@@ -292,7 +424,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: #444;
+        background-color: grey;
         color: white;
         width: 70%; /* Set width to 70% */
         padding: 1.25rem;
@@ -300,21 +432,33 @@
         box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
         margin-bottom: 1.25rem; /* Space below the big card */
         font-size: 2rem;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
     }
 
     .big-card h2 {
         text-align: center; /* Center align text */
         width: 100%; /* Full width */
+        margin-bottom: 1rem; /* Space below the title */
     }
 
     .content {
         display: flex;
         align-items: flex-start; /* Align items to the top */
         width: 100%; /* Full width */
+        flex: 1; /* Allow content to grow */
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Center align text */
+
     }
 
     .content p {
+        display: flex;
+        align-items: flex-start; /* Align items to the top */
         flex: 1; /* Allow text to grow */
+    margin-right: 1.25rem; /* Space between text and image */
+        
+
+       
     }
 
     .investors-canvas-guy {
@@ -337,5 +481,143 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         font-size: 2rem ;
+
+        display: flex; /* Enable flexbox */
+    flex-direction: column; /* Arrange children in a column */
+    justify-content: center;
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center align text */
     }
+
+    .small-card h3 {
+        width: 100%; /* Full width */
+        margin-bottom: 2rem; /* Space below the title */
+    }
+
+    
+    #faq-section {
+        padding: 20px;
+        background-color: black;
+    }
+    
+    .faq-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .faq-heading h2 {
+        font-size: 32px;
+        color: #333;
+        text-align: center;
+    }
+    
+    .faq-heading h3 {
+        font-size: 18px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .faq-accordion {
+        margin-top: 20px;
+    }
+    
+    .faq-item {
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .faq-question {
+        background-color: #eee;
+        padding: 15px;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .faq-answer {
+        padding: 15px;
+        display: none;
+        font-size: 16px;
+        background-color: #fff;
+    }
+    
+    .faq-question.active + .faq-answer {
+        display: block;
+    }
+    
+    .toggle-icon {
+        font-size: 24px;
+        transition: transform 0.3s ease;
+    }
+    
+    .faq-question.active .toggle-icon {
+        transform: rotate(45deg);
+    }
+    
+    @media (max-width: 768px) {
+        .faq-question {
+            font-size: 16px;
+        }
+    
+        .faq-answer {
+            font-size: 14px;
+        }
+    }
+
+    
+
+    /* Footer styles */
+.footer {
+    border-top: 2px solid yellow; /* Yellow border on the top */
+    background-color: black; /* Background color */
+    padding: 20px; /* Spacing around content */
+    height: 120px; /* Adjust footer height */
+    display: flex;
+    align-items: center; /* Vertically center content */
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between; /* Space between left and right sections */
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto; /* Center content horizontally */
+    align-items: center; /* Vertically center items */
+  }
+  
+  .left-side {
+    display: flex;
+    align-items: center;
+    margin-left: 40px; /* Push the logo and text towards the center (adjustable) */
+  }
+  
+  .footer-logo {
+    height: 50px; /* Adjust logo size */
+    margin-right: 15px; /* Space between logo and text */
+  }
+  
+  .copyright-text {
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .right-side {
+    display: flex;
+    gap: 20px; /* Space between icons */
+    margin-right: 40px; /* Space to the right of icons (adjustable) */
+  }
+  
+  .dex-link img {
+    height: 30px; /* Adjust icon size */
+    transition: transform 0.3s ease;
+  }
+  
+  .dex-link img:hover {
+    transform: scale(1.1); /* Scale up on hover for visual effect */
+  }
+  
     

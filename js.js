@@ -1,3 +1,160 @@
+// Button animation & Countdown
+
+$(function() {
+    var pointsA = [], pointsB = [], $canvas = null, canvas = null, context = null;
+    var points = 8, viscosity = 20, mouseDist = 70, damping = 0.05;
+    var mouseX = 0, mouseY = 0, relMouseX = 0, relMouseY = 0;
+    var mouseLastX = 0, mouseLastY = 0, mouseDirectionX = 0, mouseDirectionY = 0;
+    var mouseSpeedX = 0, mouseSpeedY = 0;
+    let countdownInterval;
+
+    function mouseDirection(e) {
+        mouseDirectionX = (mouseX < e.pageX) ? 1 : (mouseX > e.pageX) ? -1 : 0;
+        mouseDirectionY = (mouseY < e.pageY) ? 1 : (mouseY > e.pageY) ? -1 : 0;
+        mouseX = e.pageX; mouseY = e.pageY;
+        relMouseX = (mouseX - $canvas.offset().left);
+        relMouseY = (mouseY - $canvas.offset().top);
+    }
+    $(document).on('mousemove', mouseDirection);
+
+    function mouseSpeed() {
+        mouseSpeedX = mouseX - mouseLastX;
+        mouseSpeedY = mouseY - mouseLastY;
+        mouseLastX = mouseX; mouseLastY = mouseY;
+        setTimeout(mouseSpeed, 50);
+    }
+    mouseSpeed();
+
+    function initButton() {
+        var button = $('.btn-launch');
+        var buttonWidth = button.width(), buttonHeight = button.height();
+
+        $canvas = $('<canvas></canvas>');
+        button.append($canvas);
+        canvas = $canvas.get(0);
+        canvas.width = buttonWidth + 100;
+        canvas.height = buttonHeight + 100;
+        context = canvas.getContext('2d');
+
+        var x = buttonHeight / 2;
+        for (var j = 1; j < points; j++) addPoints((x + ((buttonWidth - buttonHeight) / points) * j), 0);
+        addPoints(buttonWidth - buttonHeight / 5, 0);
+        addPoints(buttonWidth + buttonHeight / 10, buttonHeight / 2);
+        addPoints(buttonWidth - buttonHeight / 5, buttonHeight);
+        for (var j = points - 1; j > 0; j--) addPoints((x + ((buttonWidth - buttonHeight) / points) * j), buttonHeight);
+        addPoints(buttonHeight / 5, buttonHeight);
+        addPoints(-buttonHeight / 10, buttonHeight / 2);
+        addPoints(buttonHeight / 5, 0);
+
+        renderCanvas();
+    }
+
+    function addPoints(x, y) {
+        pointsA.push(new Point(x, y, 1));
+        pointsB.push(new Point(x, y, 2));
+    }
+
+    function Point(x, y, level) {
+        this.x = this.ix = 50 + x;
+        this.y = this.iy = 50 + y;
+        this.vx = 0; this.vy = 0;
+        this.cx1 = 0; this.cy1 = 0;
+        this.cx2 = 0; this.cy2 = 0;
+        this.level = level;
+    }
+
+    Point.prototype.move = function() {
+        this.vx += (this.ix - this.x) / (viscosity * this.level);
+        this.vy += (this.iy - this.y) / (viscosity * this.level);
+        var dx = this.ix - relMouseX, dy = this.iy - relMouseY;
+        var relDist = (1 - Math.sqrt((dx * dx) + (dy * dy)) / mouseDist);
+        if (relDist > 0 && relDist < 1) {
+            if ((mouseDirectionX > 0 && relMouseX > this.x) || (mouseDirectionX < 0 && relMouseX < this.x)) this.vx = (mouseSpeedX / 4) * relDist;
+            if ((mouseDirectionY > 0 && relMouseY > this.y) || (mouseDirectionY < 0 && relMouseY < this.y)) this.vy = (mouseSpeedY / 4) * relDist;
+        }
+        this.vx *= (1 - damping);
+        this.x += this.vx;
+        this.vy *= (1 - damping);
+        this.y += this.vy;
+    };
+
+    function renderCanvas() {
+        requestAnimationFrame(renderCanvas);
+        context.clearRect(0, 0, $canvas.width(), $canvas.height());
+        context.fillStyle = '#fff';
+        context.fillRect(0, 0, $canvas.width(), $canvas.height());
+
+        for (var i = 0; i <= pointsA.length - 1; i++) pointsA[i].move(), pointsB[i].move();
+
+        var groups = [pointsA, pointsB];
+        for (var j = 0; j <= 1; j++) {
+            var points = groups[j];
+            context.fillStyle = j === 0 ? '#1CE2D8' : '#E406D6';
+            context.beginPath();
+            context.moveTo(points[0].x, points[0].y);
+            for (var i = 0; i < points.length; i++) {
+                var p = points[i], nextP = points[i + 1];
+                if (nextP) {
+                    p.cx1 = p.cx2 = (p.x + nextP.x) / 2;
+                    p.cy1 = p.cy2 = (p.y + nextP.y) / 2;
+                    context.bezierCurveTo(p.x, p.y, p.cx1, p.cy1, p.cx1, p.cy1);
+                }
+            }
+            context.fill();
+        }
+    }
+
+    initButton();
+
+    // Countdown functionality
+    $(".btn-launch").click(function(e) {
+        e.preventDefault();
+
+        // Hide the button
+        $(this).fadeOut(); // This will make the button disappear
+
+        // Clear any existing countdown interval
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+        }
+
+        // Set the countdown timer logic
+        var countdownDate = new Date();
+        countdownDate.setUTCHours(22, 0, 0); // Set to 10 PM UTC
+        countdownDate.setUTCDate(countdownDate.getUTCDate() + 2); // Add 2 days (48 hours)
+
+        var now = new Date().getTime();
+        var timeLeft = countdownDate - now;
+
+        countdownInterval = setInterval(function() {
+            var hours = Math.floor(timeLeft / (1000 * 60 * 60));
+            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            $(".countdown-text").html(hours + "h " + minutes + "m " + seconds + "s Until launch. Stay tuned!");
+            timeLeft -= 1000;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                $(".countdown-text").html("Launch!");
+            }
+        }, 1000);
+
+        // Append countdown text if not present
+        if (!$(".countdown-text").length) {
+            $(this).after('<div class="countdown-text">Until launch. Stay tuned!</div>');
+        }
+    });
+
+}); // Closing the main $(function() { block
+
+
+
+
+    
+
+
+
 // Carousel 
 
 let items = document.querySelectorAll('.carousel .card'); // Using your existing card class
@@ -59,7 +216,6 @@ document.addEventListener("DOMContentLoaded", function() {
             bigCard.classList.remove('hidden');
             bigCard.classList.add('animate-top');
         } else {
-            // Reset classes if it's out of view
             bigCard.classList.add('hidden');
             bigCard.classList.remove('animate-top');
         }
@@ -70,7 +226,6 @@ document.addEventListener("DOMContentLoaded", function() {
             smallCards[0].classList.remove('hidden');
             smallCards[0].classList.add('animate-left');
         } else {
-            // Reset classes if it's out of view
             smallCards[0].classList.add('hidden');
             smallCards[0].classList.remove('animate-left');
         }
@@ -81,7 +236,6 @@ document.addEventListener("DOMContentLoaded", function() {
             smallCards[1].classList.remove('hidden');
             smallCards[1].classList.add('animate-right');
         } else {
-            // Reset classes if it's out of view
             smallCards[1].classList.add('hidden');
             smallCards[1].classList.remove('animate-right');
         }
@@ -95,4 +249,15 @@ document.addEventListener("DOMContentLoaded", function() {
     // Check visibility on scroll
     window.addEventListener('scroll', checkVisibility);
     checkVisibility(); // Initial check
+});
+
+
+// FAQ Section
+
+document.querySelectorAll('.faq-question').forEach(item => {
+    item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        item.classList.toggle('active');
+        answer.classList.toggle('active');
+    });
 });
