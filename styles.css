@@ -146,7 +146,7 @@
     .lead {
         margin-top: 1.25rem; /* Space above the lead text */
         font-size: 1.25rem;
-        margin-bottom: 1.25rem;
+        margin-bottom: 3rem;
         
     }
     
@@ -154,7 +154,7 @@
 
     .button-container {
         display: flex; /* Ensure flex properties on button container */
-        margin-right: 8rem; /* Space between button and text */
+        margin-right: 5rem; /* Space between button and text */
         width: 200px; /* Adjust width as needed */
        
         
@@ -232,7 +232,37 @@
     .btn-launch:active {
         transform: translateY(-50%) scale(0.95); /* Adds slight scale-down effect on click */   
     }
-    
+    .contract-button-container {
+    margin-top: 0.5rem; /* Adjust as needed */
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 2rem;
+}
+
+.btn-contract {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    font-size: 0.875rem; /* Smaller font size */
+    transition: opacity 0.3s ease;
+    opacity: 0.9; /* Slight transparency */
+}
+
+
 
     /* Carousel Section */
     
@@ -273,6 +303,7 @@
     margin-top: 5rem;
     text-align: center;
     margin-bottom: 1rem;
+
 }
 
 .carousel-text {
@@ -366,11 +397,14 @@
   .canvas-container {
     text-align: center;
     color: white;
+    display: flex;  /* Use flexbox for layout */
+    flex-direction: column; /* Arrange children in a column */
+    align-items: center; /* Align items to the center */
     
 }
 
   .canvas-catchphrase {
-    font-size: 5rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
 }
 
@@ -378,6 +412,24 @@
     display: block;
     margin: 0 auto;
     
+}
+
+.contract-docs-container {
+    margin-top: 0.5rem; /* Adjust as needed */
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 2rem;
+}
+
+.btn-docs {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
 }
     
 
@@ -530,9 +582,12 @@
     }
 
     
+    /* FAQ Section */
+
     #faq-section {
         padding: 20px;
         background-color: black;
+        margin-top: 7rem;
     }
     
     .faq-container {
@@ -542,13 +597,14 @@
     
     .faq-heading h2 {
         font-size: 32px;
-        color: #333;
+        color: white;
         text-align: center;
+        margin-bottom: 1rem;
     }
     
     .faq-heading h3 {
         font-size: 18px;
-        color: #666;
+        color: white;
         text-align: center;
         margin-bottom: 20px;
     }

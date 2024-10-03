@@ -158,9 +158,45 @@ $(function() {
 }); // Closing the main $(function() { block
 
 
+// Copy to clipboard button
 
-
+// Copy to clipboard function with tooltip
+$(".btn-contract").on("click", function (e) {
+    e.preventDefault();
     
+    // Create a temporary input element to copy the text
+    const tempInput = document.createElement("input");
+    tempInput.value = $(this).text();
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    
+    try {
+        document.execCommand("copy");
+        showTooltip("Copied!", e.pageX, e.pageY); // Show tooltip on success
+    } catch (err) {
+        showTooltip("Failed to copy!", e.pageX, e.pageY); // Show tooltip on failure
+    }
+
+    document.body.removeChild(tempInput);
+});
+
+// Function to show tooltip
+function showTooltip(message, x, y) {
+    const tooltip = document.createElement("div");
+    tooltip.className = "tooltip";
+    tooltip.innerText = message;
+    document.body.appendChild(tooltip);
+    
+    // Position the tooltip
+    tooltip.style.left = `${x}px`;
+    tooltip.style.top = `${y}px`;
+    
+    // Remove tooltip after a delay
+    setTimeout(() => {
+        document.body.removeChild(tooltip);
+    }, 1500); // Adjust time as needed
+}
+
 
 
 
