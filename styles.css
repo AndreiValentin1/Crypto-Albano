@@ -197,7 +197,8 @@
     
     .btn-launch {
         position: relative;
-        display: inline-block;
+        display: block;
+        padding: 10px 20px;
         width: auto; /* Avoid stretching */
         height: 50px;
         line-height: 50px; /* Center text vertically */

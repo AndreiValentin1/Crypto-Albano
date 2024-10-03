@@ -81,7 +81,7 @@ $(function() {
     function renderCanvas() {
         requestAnimationFrame(renderCanvas);
         context.clearRect(0, 0, $canvas.width(), $canvas.height());
-        context.fillStyle = '#fff';
+        context.fillStyle = '#000';
         context.fillRect(0, 0, $canvas.width(), $canvas.height());
 
         for (var i = 0; i <= pointsA.length - 1; i++) pointsA[i].move(), pointsB[i].move();
@@ -89,7 +89,7 @@ $(function() {
         var groups = [pointsA, pointsB];
         for (var j = 0; j <= 1; j++) {
             var points = groups[j];
-            context.fillStyle = j === 0 ? '#1CE2D8' : '#E406D6';
+            context.fillStyle = '#FFC107';
             context.beginPath();
             context.moveTo(points[0].x, points[0].y);
             for (var i = 0; i < points.length; i++) {
@@ -107,12 +107,26 @@ $(function() {
     initButton();
 
     // Countdown functionality
-    $(".btn-launch").click(function(e) {
+    $(".btn-launch").on('click touchend', function(e) {
         e.preventDefault();
+        
+        // Check if the countdown is already active
+        if ($(this).data('countdown-active')) {
+            return; // Prevent further clicks if already active
+        }
 
-        // Hide the button
-        $(this).fadeOut(); // This will make the button disappear
+        // Set the countdown active state
+        $(this).data('countdown-active', true);
 
+        // Hide the button with fade out
+        $(this).fadeOut("slow", function() {
+            // Append countdown text after the button has faded out
+            $(this).after('<div class="countdown-text">Until launch. Stay tuned!</div>');
+            startCountdown();
+        });
+    });
+
+    function startCountdown() {
         // Clear any existing countdown interval
         if (countdownInterval) {
             clearInterval(countdownInterval);
@@ -127,25 +141,20 @@ $(function() {
         var timeLeft = countdownDate - now;
 
         countdownInterval = setInterval(function() {
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                $(".countdown-text").html("Launch!");
+                return;
+            }
+
             var hours = Math.floor(timeLeft / (1000 * 60 * 60));
             var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            $(".countdown-text").html(hours + "h " + minutes + "m " + seconds + "s Until launch. Stay tuned!");
+            $(".countdown-text").html(hours + "h " + minutes + "m " + seconds + "s until Launch. Stay tuned!");
             timeLeft -= 1000;
-
-            if (timeLeft <= 0) {
-                clearInterval(countdownInterval);
-                $(".countdown-text").html("Launch!");
-            }
         }, 1000);
-
-        // Append countdown text if not present
-        if (!$(".countdown-text").length) {
-            $(this).after('<div class="countdown-text">Until launch. Stay tuned!</div>');
-        }
-    });
-
+    }
 }); // Closing the main $(function() { block
 
 
