@@ -115,41 +115,50 @@
     /* Main Section */
 
     .container-h1-p {
+        position: relative;
         display: flex; /* Use flexbox for layout */
         justify-content: space-between; /* Space between items */
         align-items: center; /* Align items vertically in the center */
-        height: 25vh; /* Adjust height if necessary */
+        
         padding: 0 4rem; /* Padding on the sides */
     }
     
     .text-container {
-        width: 30%; /* 30% width for text */
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Arrange children in a column */
+        justify-content: flex-start; /* Align items to the top */
+        align-items: flex-start; /* Align items to the left */
+        width: 50%; /* 30% width for text */
         color: white;
        
     }
 
     .title {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
+        font-size: 4.313rem;
+        margin-left: 7rem; /* Space between title and text */
+        margin-bottom: 3rem;
+        position: relative; /* Position relative for pseudo-element */
+        top: 0; /* Reset top position */
     }
 
-    .title-lead {
-        color: #ffcc00;
-    }
+    
 
     .lead {
+        margin-top: 1.25rem; /* Space above the lead text */
         font-size: 1.25rem;
         margin-bottom: 1.25rem;
+        
     }
     
     /* Button styles */ 
 
     .button-container {
         display: flex; /* Ensure flex properties on button container */
-        justify-content: flex-end; /* Aligns the button to the right */
-        flex-grow: 1; /* Allow the button container to grow and take remaining space */
-        width: 50%;
-        padding: 0 4rem; /* Padding on the sides */
+        margin-right: 8rem; /* Space between button and text */
+        width: 200px; /* Adjust width as needed */
+       
+        
+        
     }
     
     /* Liquid Button */
@@ -212,6 +221,7 @@
         overflow: hidden;
         z-index: 1; /* Ensure the text remains visible above the effect */
         transition: background-color 0.3s ease; /* Smooth transition */
+        width: 200px; /* Set button width */
     }
         
     .btn-launch:hover {
@@ -251,7 +261,7 @@
 .carousel-cards-title {
     font-size: 2rem;
     color: white;
-    font-family: Pacifico, cursive;
+    
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -260,7 +270,7 @@
 .carousel-title {
     font-size: 2rem;
     color: white;
-    font-family: Pacifico, cursive;
+    margin-top: 5rem;
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -348,7 +358,27 @@
     }
   }
   
+  .canvas {
+    margin-bottom: 5rem;
+  }
 
+
+  .canvas-container {
+    text-align: center;
+    color: white;
+    
+}
+
+  .canvas-catchphrase {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+   .canvas img {
+    display: block;
+    margin: 0 auto;
+    
+}
     
 
     /* Cards Section */
@@ -425,7 +455,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: grey;
+        background-color: black;
         color: white;
         width: 70%; /* Set width to 70% */
         padding: 1.25rem;
@@ -434,6 +464,7 @@
         margin-bottom: 1.25rem; /* Space below the big card */
         font-size: 2rem;
         box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        border: 1px solid #333; /* Add border for better visibility */
     }
 
     .big-card h2 {
@@ -447,14 +478,17 @@
         align-items: flex-start; /* Align items to the top */
         width: 100%; /* Full width */
         flex: 1; /* Allow content to grow */
-    justify-content: center; /* Center content horizontally */
-    text-align: center; /* Center align text */
+        justify-content: center; /* Center content horizontally */
+        text-align: center; /* Center align text */
+        
+     
 
     }
 
     .content p {
         display: flex;
-        align-items: flex-start; /* Align items to the top */
+        align-items: center; /* Align items to the top */
+        justify-content: center; /* Center content horizontally */
         flex: 1; /* Allow text to grow */
     margin-right: 1.25rem; /* Space between text and image */
         
@@ -475,19 +509,19 @@
     }
     
     .small-card {
-        background-color: #666;
+        background-color: black;
         color: white;
         width: 48%; /* Each small card width */
         padding: 15px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         font-size: 2rem ;
-
+        border: 1px solid #333; /* Add border for better visibility */
         display: flex; /* Enable flexbox */
-    flex-direction: column; /* Arrange children in a column */
-    justify-content: center;
-    align-items: center; /* Center content horizontally */
-    text-align: center; /* Center align text */
+        flex-direction: column; /* Arrange children in a column */
+        justify-content: center;
+        align-items: center; /* Center content horizontally */
+        text-align: center; /* Center align text */
     }
 
     .small-card h3 {

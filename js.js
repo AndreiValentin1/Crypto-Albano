@@ -107,7 +107,7 @@ $(function() {
     initButton();
 
     // Countdown functionality
-    $(".btn-launch").on('click touchend', function(e) {
+    $(".button-container").on('click touchend', function(e) {
         e.preventDefault();
         
         // Check if the countdown is already active
