@@ -39,15 +39,7 @@
     z-index: 10; /* Ensure it stays above other elements */
   }
   
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
-    z-index: 1;
-  }
+ 
   
   .container {
     position: relative;
@@ -81,14 +73,22 @@
     font-style: normal;
   }
   
-  
+  .social-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 1.25rem; /* 20px -> 1.25rem */
+  }
+
   .social-buttons .icon {
     margin-left: 1.25rem; /* 20px -> 1.25rem */
     color: white;
     text-transform: uppercase;
     font-size: 1.2em;
     position: relative;
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     width: 2rem;
     height: 2rem;
     margin: 0 10px;
@@ -266,7 +266,7 @@
 
     /* Carousel Section */
     
-   /* Existing classes have minimal changes */
+  
 #carousel-section {
     position: relative;
     overflow: hidden;
@@ -710,5 +710,217 @@
   .dex-link img:hover {
     transform: scale(1.1); /* Scale up on hover for visual effect */
   }
+
+
+    /* Responsive styles */
+
+
+
+/* Responsive Media Queries */
+
+/* Desktop: 1920×1080 */
+@media (min-width: 1600px) and (max-width: 1920px) {
+    .header {
+      height: 80vh;
+      background-size: cover;
+      background-position: center; /* Center the background image */
+      background-repeat: no-repeat; /* Prevents background image duplication */
+    }
+    .brand-name {
+      font-size: 2.5rem;
+    }
+    .logo {
+      width: 7rem;
+    }
+}
+
+/* Desktop: 1366×768 */
+@media (min-width: 1280px) and (max-width: 1440px) {
+    .header {
+        display: flex;
+        height: 55vh;
+        width: 110vh;
+        flex-direction: column; /* Stack elements vertically */
+        justify-content: flex-start; /* Align items at the top */
+        background-size: cover; /* Ensure image covers header */
+        background-position: center; /* Center the background image */
+        background-repeat: no-repeat; /* Prevents background image duplication */
+      }
+      .brand-name {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      .logo {
+        width: 3rem;
+        margin-bottom: 0.5rem;
+      }
+      .social-buttons {
+        justify-content: center; /* Center social buttons */
+        margin-top: 0.5rem; /* Adjust as needed */
+        margin-right: 1rem; /* Keep margin for positioning */
+        width: auto; /* Allow for proper width adjustment */
+      }
+}
+
+/* Desktop: 1280×1024 */
+@media (max-width: 1280px) {
+    .header {
+        display: flex;
+        height: 35vh;
+        width: 100vh;
+        flex-direction: column; /* Stack elements vertically */
+        justify-content: flex-start; /* Align items at the top */
+        background-size: cover; /* Ensure image covers header */
+        background-position: center; /* Center the background image */
+        background-repeat: no-repeat; /* Prevents background image duplication */
+      }
+      .brand-name {
+        font-size: 1rem;
+        text-align: center;
+      }
+      .logo {
+        width: 3rem;
+        margin-bottom: 0.5rem;
+      }
+      .social-buttons {
+        justify-content: center; /* Center social buttons */
+        margin-top: 0.5rem; /* Adjust as needed */
+        margin-right: 1rem; /* Keep margin for positioning */
+        width: auto; /* Allow for proper width adjustment */
+      }
+}
+
+/* Desktop: 1024×768 */
+@media (max-width: 1024px) {
+    .header {
+        display: flex;
+        height: 35vh;
+        width: 100vh;
+        flex-direction: column; /* Stack elements vertically */
+        justify-content: flex-start; /* Align items at the top */
+        background-size: cover; /* Ensure image covers header */
+        background-position: center; /* Center the background image */
+        background-repeat: no-repeat; /* Prevents background image duplication */
+      }
+      .brand-name {
+        font-size: 1rem;
+        text-align: center;
+      }
+      .logo {
+        width: 3rem;
+        margin-bottom: 0.5rem;
+      }
+      .social-buttons {
+        justify-content: center; /* Center social buttons */
+        margin-top: 0.5rem; /* Adjust as needed */
+        margin-right: 6rem; /* Keep margin for positioning */
+        width: auto; /* Allow for proper width adjustment */
+      }
+}
+
+/* Tablet: 768×1024, 601×962 */
+@media (max-width: 768px) {
+    .header {
+        display: flex;
+        height: 40vh;
+        flex-direction: column; /* Stack elements vertically */
+        justify-content: flex-start; /* Align items at the top */
+        background-size: cover; /* Ensure image covers header */
+        background-position: center; /* Center the background image */
+        background-repeat: no-repeat; /* Prevents background image duplication */
+      }
+      .brand-name {
+        font-size: 1rem;
+        text-align: center;
+      }
+      .logo {
+        width: 3rem;
+        margin-bottom: 0.5rem;
+      }
+      .social-buttons {
+        justify-content: center; /* Center social buttons */
+        margin-top: 0.5rem; /* Adjust as needed */
+        margin-right: 8.5rem; /* Keep margin for positioning */
+        width: auto; /* Allow for proper width adjustment */
+      }
+  }
+
+
+@media (max-width: 425px) {
+    .header {
+      height: 40vh;
+      
+      flex-direction: column; /* Stack elements vertically */
+      justify-content: flex-start; /* Align items at the top */
+      background-size: cover; /* Ensure image covers header */
+      background-position: center; /* Center the background image */
+      background-repeat: no-repeat; /* Prevents background image duplication */
+      width: 100vh;
+    }
+    .brand-name {
+      font-size: 1rem;
+      text-align: center;
+    }
+    .logo {
+      width: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .social-buttons {
+      justify-content: center; /* Center social buttons */
+      margin-top: 0.5rem; /* Adjust as needed */
+      margin-left: 3rem; /* Keep margin for positioning */
+      margin-right: 9rem; /* Keep margin for positioning */
+      width: auto; /* Allow for proper width adjustment */
+    }
+}
+
+/* Mobile: 375×667, 414×736, 360×800, 390×844 */
+@media (max-width: 375px) and (max-height: 667px) {
+    .header {
+      height: 40vh;
+      flex-direction: column; /* Stack elements vertically */
+      justify-content: flex-start; /* Align items at the top */
+      background-size: cover; /* Ensure image covers header */
+      background-clip: content-box  /* Center the background image */;
+      background-position: contain; /* Center the background image */
+      background-position: center; /* Center the background image */
+      background-repeat: no-repeat; /* Prevents background image duplication */
+    }
+    .brand-name {
+      font-size: 1rem;
+      text-align: center;
+    }
+    .logo {
+      width: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .social-buttons {
+        display: flex;
+        justify-content: flex-end; 
+        align-items: center;
+        
+      }
+      .social-buttons .icon {
+        margin-left: 1.25rem; /* 20px -> 1.25rem */
+        color: white;
+        text-transform: uppercase;
+        font-size: 1.2em;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 2rem;
+        height: 2rem;
+        margin: 0 10px;
+        vertical-align: middle;
+      }
+}
+
   
-    
+    /* Desktop styles */
+
+
+    /* Tablet styles */
+
+
+    /* Mobile styles */
