@@ -121,7 +121,7 @@ $(function() {
         // Hide the button with fade out
         $(this).fadeOut("slow", function() {
             // Append countdown text after the button has faded out
-            $(this).after('<div class="countdown-text">Until launch. Stay tuned!</div>');
+            $(this).after('<div class="countdown-text">Until launch. </div>');
             startCountdown();
         });
     });
@@ -151,7 +151,7 @@ $(function() {
             var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            $(".countdown-text").html(hours + "h " + minutes + "m " + seconds + "s until Launch. Stay tuned!");
+            $(".countdown-text").html(hours + "h " + minutes + "m " + seconds + "s until app launch.");
             timeLeft -= 1000;
         }, 1000);
     }

@@ -232,6 +232,7 @@
     .btn-launch:active {
         transform: translateY(-50%) scale(0.95); /* Adds slight scale-down effect on click */   
     }
+    
     .contract-button-container {
     margin-top: 0.5rem; /* Adjust as needed */
     text-align: center;
@@ -244,10 +245,11 @@
 .btn-contract {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #301934;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    border: 2px solid #301934; /* Fine yellow border */
 }
 
 .tooltip {
@@ -267,175 +269,343 @@
     /* Carousel Section */
     
   
-#carousel-section {
-    position: relative;
-    overflow: hidden;
-    height: 50vw;
-    padding: 20px 0;
-  }
-  
-  .carousel-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  
-  .carousel {
-    position: relative;
-    width: 100%;
-    height: 50vw; /* Adjusted height */
-    overflow: hidden; /* Hide overflow for the carousel */
-}
-
-.carousel-cards-title {
-    font-size: 2rem;
-    color: white;
+    #carousel-section {
+        position: relative;
+        overflow: hidden;
+        height: auto;
+        padding: 20px 0;
+        min-height: 300px;
+    }
     
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-
-.carousel-title {
-    font-size: 2rem;
-    color: white;
-    margin-top: 5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-
-}
-
-.carousel-text {
-    font-size: 1.2rem; /* Adjust based on desired size */
-    position: absolute;
-    z-index: 10;
-    /* Add other styling to make sure it looks correct */
-  }
-  
-.card {
-    position: absolute;
-    width: 25%; /* Use the same width as before */
-    height: 30vw; /* Same height as before */
-    background-color: #333; /* Same background color */
-    color: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    transition: transform 0.5s, opacity 0.5s; /* Smooth transition */
-    left: calc(50% - 12.5%); /* Centering */
-    top: 0; /* Aligning cards to the top */
-    display: flex; /* Enable flexbox */
-
-    flex-direction: column; /* Arrange children in a column */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-
-.carousel-cards-text {
-    text-align: center; /* Center align text */
-    font-size: 2rem; /* Font size for text */
-    margin-top: auto; /* Push the text to the bottom */
-    margin-bottom: auto; /* Push the text to the top */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-
-.meme-art {
-    font-family: Pacifico, cursive; /* Use Pacifico font */
-    color: #ffcc00;
-    font-family: Pacifico, cursive; /* Use Pacifico font */
-}
-
-/* Button styling */
-.carousel-button {
-    position: absolute;
-    top: 40%; /* Adjust button position */
-    color: white;
-    background-color: transparent;
-    border: none;
-    font-size: xxx-large;
-    font-family: monospace;
-    font-weight: bold;
-    z-index: 2; /* Ensure buttons are above cards */
-}
-
-.carousel-button.left {
-    left: 10px; /* Positioning for left button */
-}
-
-.carousel-button.right {
-    right: 10px; /* Positioning for right button */
-}
-
-  
-  /* New Additions for Partial Visibility */
-  .card:nth-child(n+2) {
-    transform: scale(0.85); /* Slightly shrink side cards */
-    opacity: 0.5;
-  }
-  
-  .card.active {
-    transform: scale(1); /* Larger active card */
-    opacity: 1;
-  }
-  
-  /* New Addition for Responsiveness */
-  @media (max-width: 768px) {
+    .carousel-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .carousel {
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+    
+    .carousel-cards-title, .carousel-title {
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        color: white;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .carousel-title {
+        margin-top: 2rem;
+    }
+    
+    .carousel-text {
+        font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+        position: absolute;
+        z-index: 10;
+    }
+    
     .card {
-      width: 80%; /* Increase card width on smaller screens */
-      height: auto;
+        position: absolute;
+        width: 80%;
+        height: auto;
+        min-height: 200px;
+        max-height: 80vh; /* Limit maximum height */
+        background-color: #333;
+        color: white;
+        border-radius: 8px;
+        padding: 1rem;
+        transition: transform 0.5s, opacity 0.5s;
+        left: 10%;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        overflow: hidden; /* Prevent content from spilling out */
+    }
+    
+    .carousel-cards-text {
+        text-align: center;
+        font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+        margin: auto 0;
+        overflow-y: auto; /* Allow scrolling if content is too long */
+        max-height: 100%; /* Take full height of the card */
+        padding: 0.5rem;
+        box-sizing: border-box;
+    }
+    
+    .meme-art {
+        font-family: Pacifico, cursive;
+        color: #ffcc00;
+        font-size: clamp(1rem, 3vw, 1.8rem); /* Adjust font size for meme art */
+    }
+    
+    .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        font-size: clamp(1.5rem, 5vw, 3rem);
+        font-family: monospace;
+        font-weight: bold;
+        z-index: 2;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    .carousel-button.left {
+        left: 0;
+    }
+    
+    .carousel-button.right {
+        right: 0;
+    }
+    
+    /* Responsive adjustments */
+    @media (min-width: 768px) {
+        .card {
+            width: 60%;
+            left: 20%;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .card {
+            width: 40%;
+            left: 30%;
+        }
+    }
+    
+    @media (min-width: 1280px) {
+        #carousel-section {
+            height: 50vw;
+        }
+        .carousel {
+            height: 50vw;
+        }
+        .card {
+            width: 25%;
+            height: 30vw;
+            left: calc(50% - 12.5%);
+            max-height: none; /* Remove max-height limit for larger screens */
+        }
+    }
+    
+    /* Ensure all cards are visible */
+    .card:nth-child(n+2) {
+        transform: scale(0.85) translateX(100%);
+        opacity: 0.5;
+    }
+    
+    .card:nth-child(n+3) {
+        transform: scale(0.85) translateX(-100%);
+    }
+    
+    .card.active {
+        transform: scale(1);
+        opacity: 1;
+        z-index: 1;
+    }
+    
+    /* Adjust card positioning for larger screens */
+    @media (min-width: 1280px) {
+        .card:nth-child(n+2) {
+            transform: scale(0.85) translateX(70%);
+        }
+        
+        .card:nth-child(n+3) {
+            transform: scale(0.85) translateX(-70%);
+        }
     }
   
-    .left, .right {
-      display: none; /* Hide navigation on small screens */
-    }
-  }
-  
-  .canvas {
-    margin-bottom: 5rem;
-  }
-
-
-  .canvas-container {
+ /* Canvas Section */
+.canvas-container {
     text-align: center;
     color: white;
-    display: flex;  /* Use flexbox for layout */
-    flex-direction: column; /* Arrange children in a column */
-    align-items: center; /* Align items to the center */
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
 }
 
-  .canvas-catchphrase {
-    font-size: 4rem;
+.canvas-catchphrase {
+    font-size: clamp(2rem, 5vw, 4rem);
     margin-bottom: 1rem;
 }
 
-   .canvas img {
-    display: block;
-    margin: 0 auto;
-    
+.canvas {
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
 }
 
-.contract-docs-container {
-    margin-top: 0.5rem; /* Adjust as needed */
-    text-align: center;
-    justify-content: center;
+.canvas img {
+    display: block;
     width: 100%;
-    margin-right: 0;
-    margin-bottom: 2rem;
+    height: auto;
+}
+
+.button-docs-container {
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
 }
 
 .btn-docs {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #000435;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    font-size: clamp(0.8rem, 2vw, 1rem);
 }
-    
 
-    /* Cards Section */
+/* Cards Section */
+#info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.25rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-/* Animation keyframes */
+.investors-h1 {
+    color: white;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+.big-card {
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.25rem;
+    font-size: clamp(1rem, 2vw, 2rem);
+    box-sizing: border-box;
+    border: 1px solid #333;
+}
+
+.big-card h2 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.content p {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.investors-canvas-guy {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+}
+
+.small-cards {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.small-card {
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: clamp(1rem, 2vw, 2rem);
+    border: 1px solid #333;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.small-card h3 {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .big-card {
+        width: 70%;
+    }
+
+    .content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .content p {
+        flex: 1;
+        margin-right: 1.25rem;
+        text-align: left;
+    }
+
+    .investors-canvas-guy {
+        flex: 0 0 auto;
+        max-width: 40%;
+        margin-top: 0;
+        margin-left: 1.25rem;
+    }
+
+    .small-cards {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 70%;
+    }
+
+    .small-card {
+        width: 48%;
+    }
+}
+
+/* Animation classes (unchanged) */
+.hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    visibility: hidden;
+}
+
+.animate-top {
+    opacity: 1;
+    animation: slideInFromTop 0.8s forwards;
+}
+
+.animate-left {
+    opacity: 1;
+    animation: slideInFromLeft 0.8s forwards;
+}
+
+.animate-right {
+    opacity: 1;
+    animation: slideInFromRight 0.8s forwards;
+}
+
+/* Animation keyframes (unchanged) */
 @keyframes slideInFromTop {
     0% {
         transform: translateY(-100%);
@@ -468,120 +638,6 @@
         opacity: 1;
     }
 }
-
-/* Add hidden class */
-.hidden {
-    opacity: 0;
-    transform: translateY(100px)  /* Makes the element not visible */;
-    visibility: hidden; /* Makes the element not visible */
-}
-
-/* Animation classes */
-.animate-top {
-    opacity: 1;
-    animation: slideInFromTop 0.8s forwards; /* Slide from top */
-}
-
-.animate-left {
-    opacity: 1;
-    animation: slideInFromLeft 0.8s forwards; /* Slide from left */
-}
-
-.animate-right {
-    opacity: 1;
-    animation: slideInFromRight 0.8s forwards; /* Slide from right */
-}
-
-
-    #info-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center align the cards */
-        margin: 1.25rem; /* Margin around the section */
-    }
-    
-.investors-h1 {
-    color: white;
-}
-    .big-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: black;
-        color: white;
-        width: 70%; /* Set width to 70% */
-        padding: 1.25rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
-        margin-bottom: 1.25rem; /* Space below the big card */
-        font-size: 2rem;
-        box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        border: 1px solid #333; /* Add border for better visibility */
-    }
-
-    .big-card h2 {
-        text-align: center; /* Center align text */
-        width: 100%; /* Full width */
-        margin-bottom: 1rem; /* Space below the title */
-    }
-
-    .content {
-        display: flex;
-        align-items: flex-start; /* Align items to the top */
-        width: 100%; /* Full width */
-        flex: 1; /* Allow content to grow */
-        justify-content: center; /* Center content horizontally */
-        text-align: center; /* Center align text */
-        
-     
-
-    }
-
-    .content p {
-        display: flex;
-        align-items: center; /* Align items to the top */
-        justify-content: center; /* Center content horizontally */
-        flex: 1; /* Allow text to grow */
-    margin-right: 1.25rem; /* Space between text and image */
-        
-
-       
-    }
-
-    .investors-canvas-guy {
-        
-        flex: 0 0 auto; /* Prevent shrinking of image */
-        margin-left: 1.25rem; /* Space between image and text */
-    }
-    
-    .small-cards {
-        display: flex;
-        justify-content: space-between; /* Space between small cards */
-        width: 70%; /* Combined width of small cards */
-    }
-    
-    .small-card {
-        background-color: black;
-        color: white;
-        width: 48%; /* Each small card width */
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        font-size: 2rem ;
-        border: 1px solid #333; /* Add border for better visibility */
-        display: flex; /* Enable flexbox */
-        flex-direction: column; /* Arrange children in a column */
-        justify-content: center;
-        align-items: center; /* Center content horizontally */
-        text-align: center; /* Center align text */
-    }
-
-    .small-card h3 {
-        width: 100%; /* Full width */
-        margin-bottom: 2rem; /* Space below the title */
-    }
-
-    
     /* FAQ Section */
 
     #faq-section {
@@ -925,7 +981,7 @@
       .social-buttons {
         justify-content: center; /* Center social buttons */
         margin-top: 0.5rem; /* Adjust as needed */
-        margin-right: 28rem; /* Keep margin for positioning */
+        margin-right: 1rem; /* Keep margin for positioning */
         width: auto; /* Allow for proper width adjustment */
       }
   }
@@ -1209,10 +1265,275 @@
         width: auto; /* Allow for proper width adjustment */
       }
 }
-    /* Desktop styles */
+    /* Media queries for the title and lead text */
 
+    /* Desktop resolutions - 1920x1080, 1366x768, 1280x1024, 1024x768 */
+/* No significant changes for larger screens as the default styles are likely optimized for these sizes */
 
-    /* Tablet styles */
+/* Tablet resolutions - 768x1024, 1024x768, 601x962 */
+@media (max-width: 1024px) {
+    .container-h1-p {
+        flex-direction: column;
+        padding: 0 2rem;
+    }
 
+    .text-container {
+        width: 100%; /* Make the text container full-width */
+        align-items: center; /* Center align the text for a more balanced look */
+    }
 
-    /* Mobile styles */
+    .title {
+        font-size: 3.5rem;
+        margin-left: 0; /* Remove left margin to keep the title centered */
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .lead {
+        font-size: 1.15rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .button-container {
+        margin-right: 0;
+        justify-content: center;
+    }
+}
+
+/* Mobile resolutions - up to 414px */
+@media (max-width: 414px) {
+    .container-h1-p {
+        display: flex;
+        flex-direction: row; /* Stack elements vertically */
+        justify-content: space-between; /* Space between title and lead text */
+        align-items: center; /* Center horizontally */
+        width: 100%; /* Use full width */
+        margin: 0; /* Remove any default margin */
+        border: 1px solid blue; /* Debugging: visualize the container */
+    }
+
+    .title {
+        font-size: 2.5rem; /* Adjust title size for smaller screens */
+        margin: 0; /* Remove left margin */
+        margin-bottom: 1rem; /* Space between title and lead text */
+    }
+
+    .lead {
+        font-size: 1rem; /* Adjust lead text size */
+        margin: 0; /* Reset margins */
+        margin-bottom: 1.5rem; /* Space between lead text and button */
+    }
+
+    .button-container {
+        margin: 0; /* Reset margins */
+        width: auto; /* Adjust width as needed */
+        display: flex;
+        justify-content: flex-end; /* Align button to the right */
+        align-items: center; /* Center vertically */
+        margin-left: 19rem; /* Push the button to the right */
+    }
+
+    .btn-liquid {
+        width: 200px; /* Fixed width for button */
+    }
+
+    .countdown-text {
+        margin-left: 19rem; /* Adjust margin as needed */
+    }
+
+}
+
+/* iPhone SE - up to 375px */
+/* iPhone SE - up to 375px */
+@media (max-width: 375px) {
+
+   
+    .container-h1-p {
+        display: flex;
+        flex-direction: row; /* Stack elements vertically */
+        justify-content: space-between; /* Space between title and lead text */
+        align-items: center; /* Center horizontally */
+        width: 100%; /* Use full width */
+        margin: 0; /* Remove any default margin */
+        border: 1px solid blue; /* Debugging: visualize the container */
+    }
+
+    .title {
+        font-size: 2.5rem; /* Adjust title size for smaller screens */
+        margin: 0; /* Remove left margin */
+        margin-bottom: 1rem; /* Space between title and lead text */
+    }
+
+    .lead {
+        font-size: 1rem; /* Adjust lead text size */
+        margin: 0; /* Reset margins */
+        margin-bottom: 1.5rem; /* Space between lead text and button */
+    }
+
+    .button-container {
+        margin: 0; /* Reset margins */
+        width: auto; /* Adjust width as needed */
+        display: flex;
+        justify-content: flex-end; /* Align button to the right */
+        align-items: center; /* Center vertically */
+        margin-left: 10rem; /* Push the button to the right */
+    }
+
+    .btn-liquid {
+        width: 200px; /* Fixed width for button */
+    }
+
+    .countdown-text {
+        margin-left: 10rem; /* Adjust margin as needed */
+    }
+}
+
+@media (max-width: 430px) {
+
+   
+    .container-h1-p {
+        display: flex;
+        flex-direction: row; /* Stack elements vertically */
+        justify-content: space-between; /* Space between title and lead text */
+        align-items: center; /* Center horizontally */
+        width: 100%; /* Use full width */
+        margin: 0; /* Remove any default margin */
+        border: 1px solid blue; /* Debugging: visualize the container */
+    }
+
+    .title {
+        font-size: 2.5rem; /* Adjust title size for smaller screens */
+        margin: 0; /* Remove left margin */
+        margin-bottom: 1rem; /* Space between title and lead text */
+    }
+
+    .lead {
+        font-size: 1rem; /* Adjust lead text size */
+        margin: 0; /* Reset margins */
+        margin-bottom: 1.5rem; /* Space between lead text and button */
+    }
+
+    .button-container {
+        margin: 0; /* Reset margins */
+        width: auto; /* Adjust width as needed */
+        display: flex;
+        justify-content: flex-end; /* Align button to the right */
+        align-items: center; /* Center vertically */
+        margin-left: 20rem; /* Push the button to the right */
+    }
+
+    .btn-liquid {
+        width: 200px; /* Fixed width for button */
+    }
+
+    .countdown-text {
+        margin-left: 20rem; /* Adjust margin as needed */
+    }
+}
+
+/* iPhone 8 - up to 414px */
+@media (max-width: 414px) {
+    .contract-button-container {
+        display: flex; /* Enable flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        width: 100%; /* Full width */
+        margin: 0; /* Reset margins */
+        text-align: center; /* Center text */
+        margin-left: 8.47rem; /* Adjust margin as needed */
+    }
+
+    .btn-contract {
+        padding: 10px 20px; /* Add some padding for better appearance */
+        text-align: center; /* Center text inside the button */
+        display: inline-block; /* Ensure button behaves as inline-block */
+        display: flex; /* Enable flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        
+        margin: 0; /* Reset margins */
+        text-align: center; /* Center text */
+        margin-left: 28.47rem; /* Adjust margin as needed */
+    }
+}
+/* Tablet Portrait - up to 768px */
+@media (max-width: 768px) {
+    .contract-button-container {
+        display: flex; /* Enable flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        width: 100%; /* Full width */
+        margin: 0; /* Reset margins */
+        text-align: center; /* Center text */
+    }
+}
+.title-lead-button {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    width: 100%; /* Ensure it takes full width */
+}
+
+@media (max-width: 430px) {
+    .contract-button-container {
+        display: flex; /* Enable flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        width: 100%; /* Full width */
+        margin: 0; /* Reset margins */
+        text-align: center; /* Center text */
+        
+    }
+
+    .btn-contract {
+        padding: 10px 20px; /* Add some padding for better appearance */
+        text-align: center; /* Center text inside the button */
+        display: inline-block; /* Ensure button behaves as inline-block */
+        display: flex; /* Enable flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        
+        margin: 0; /* Reset margins */
+        text-align: center; /* Center text */
+        margin-left: 28.47rem; /* Adjust margin as needed */
+    }
+
+}
+
+/* Centering .contract-button-container for smaller screens */
+@media (max-width: 375px) {
+    .contract-button-container {
+        display: flex; /* Enable flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        width: 100%; /* Full width */
+        margin: 0; /* Reset margins */
+        text-align: center; /* Center text */
+        margin-left: 8.47rem; /* Adjust margin as needed */
+    }
+    
+    .title-lead-button {
+        display: flex; /* Use flexbox for layout */
+        justify-content: center; /* Center items horizontally */
+        align-items: center; /* Center items vertically */
+        width: 100%; /* Ensure it takes full width */
+    }
+
+    .btn-contract {
+        padding: 10px 20px; /* Add some padding for better appearance */
+        text-align: center; /* Center text inside the button */
+        display: inline-block; /* Ensure button behaves as inline-block */
+        display: flex; /* Enable flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        
+        margin: 0; /* Reset margins */
+        text-align: center; /* Center text */
+        margin-left: 8.47rem; /* Adjust margin as needed */
+    }
+}
+
+/* Media queries for carousel + canvas + Investors */
+
+/* Media Query for Tablets and Smaller Devices */
