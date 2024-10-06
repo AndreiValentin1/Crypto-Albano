@@ -306,3 +306,5 @@ document.querySelectorAll('.faq-question').forEach(item => {
         answer.classList.toggle('active');
     });
 });
+
+
