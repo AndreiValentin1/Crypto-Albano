@@ -131,28 +131,39 @@ $(function() {
         if (countdownInterval) {
             clearInterval(countdownInterval);
         }
-
+    
         // Set the countdown timer logic
+        var now = new Date();
         var countdownDate = new Date();
-        countdownDate.setUTCHours(22, 0, 0); // Set to 10 PM UTC
-        countdownDate.setUTCDate(countdownDate.getUTCDate() + 2); // Add 2 days (48 hours)
-
-        var now = new Date().getTime();
-        var timeLeft = countdownDate - now;
-
+        
+        // Set to 10 PM today
+        countdownDate.setHours(22, 0, 0, 0);
+        
+        // If it's already past 10 PM, set to 10 PM tomorrow
+        if (now > countdownDate) {
+            countdownDate.setDate(countdownDate.getDate() + 1);
+        }
+        
+        // Add 48 hours
+        countdownDate.setHours(countdownDate.getHours() + 48);
+    
         countdownInterval = setInterval(function() {
+            var now = new Date().getTime();
+            var timeLeft = countdownDate - now;
+    
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
                 $(".countdown-text").html("Launch!");
                 return;
             }
-
-            var hours = Math.floor(timeLeft / (1000 * 60 * 60));
+    
+            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            $(".countdown-text").html(hours + "h " + minutes + "m " + seconds + "s until app launch.");
-            timeLeft -= 1000;
+    
+            $(".countdown-text").html(days + "d " + hours + "h " + minutes + "m " + seconds + "s until app launch.");
+            
         }, 1000);
     }
 }); // Closing the main $(function() { block
