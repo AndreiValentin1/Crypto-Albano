@@ -1310,7 +1310,7 @@
         align-items: center; /* Center horizontally */
         width: 100%; /* Use full width */
         margin: 0; /* Remove any default margin */
-        border: 1px solid blue; /* Debugging: visualize the container */
+        
     }
 
     .title {
@@ -1356,7 +1356,7 @@
         align-items: center; /* Center horizontally */
         width: 100%; /* Use full width */
         margin: 0; /* Remove any default margin */
-        border: 1px solid blue; /* Debugging: visualize the container */
+        
     }
 
     .title {
@@ -1399,7 +1399,7 @@
         align-items: center; /* Center horizontally */
         width: 100%; /* Use full width */
         margin: 0; /* Remove any default margin */
-        border: 1px solid blue; /* Debugging: visualize the container */
+        
     }
 
     .title {
