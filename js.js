@@ -131,37 +131,30 @@ $(function() {
         if (countdownInterval) {
             clearInterval(countdownInterval);
         }
-    
-        // Set the countdown timer logic
-        var now = new Date();
-        var countdownDate = new Date();
         
-        // Set to 10 PM today
-        countdownDate.setHours(22, 0, 0, 0);
+        // Set the countdown start time to yesterday at 11:30 PM
+        var countdownStart = new Date();
+        countdownStart.setDate(countdownStart.getDate() - 1); // Set to yesterday
+        countdownStart.setHours(23, 30, 0, 0); // Set to 11:30 PM
         
-        // If it's already past 10 PM, set to 10 PM tomorrow
-        if (now > countdownDate) {
-            countdownDate.setDate(countdownDate.getDate() + 1);
-        }
+        // Set the countdown end time (48 hours from the start time)
+        var countdownDate = new Date(countdownStart.getTime() + (48 * 60 * 60 * 1000));
         
-        // Add 48 hours
-        countdownDate.setHours(countdownDate.getHours() + 48);
-    
         countdownInterval = setInterval(function() {
             var now = new Date().getTime();
             var timeLeft = countdownDate - now;
-    
+            
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
                 $(".countdown-text").html("Launch!");
                 return;
             }
-    
+            
             var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-    
+            
             $(".countdown-text").html(days + "d " + hours + "h " + minutes + "m " + seconds + "s until app launch.");
             
         }, 1000);
